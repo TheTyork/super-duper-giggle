@@ -1,0 +1,6 @@
+Django python
+Flask python
+bootstrap
+html
+JavaScript - учебник
+MongoDB - база данных
