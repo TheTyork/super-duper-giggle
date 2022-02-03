@@ -1,7 +1,7 @@
 let marka = document.getElementById('mark')
 console.log(marka)
 
-console.log(marka.innerText)
+console.log(marka.in)
 
 setTimeout(() =>{
   design('blue','black','Hello' ,'center')
