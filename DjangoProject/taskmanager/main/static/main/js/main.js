@@ -13,9 +13,10 @@ function drawChart() {
         pieSliceText: 'label',
         title: 'Swiss Language Use (100 degree rotation)',
         pieStartAngle: 100,
-        backgroundColor: rgba(256,256,256,256),
+        backgroundColor: 'transparent',
     };
 
     var chart = new google.visualization.PieChart(document.getElementById('piechart'));
     chart.draw(data, options);
 }
+
