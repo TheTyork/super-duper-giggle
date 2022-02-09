@@ -1,3 +1,4 @@
+
 @media (min-width: 768px) {
   .navbar-container {
     position: sticky;
@@ -21,5 +22,18 @@
   }
   .navbar-container .navbar-nav {
     flex-direction: column !important;
+}
   }
+
+div#backimg{
+ min-width: 100%;
+    min-height: 100%;
+    position: relative;
+  background-size: cover;
+
+}
+body, html {
+    width: 100%;
+    background-repeat: round;
+    height: 100%;
 }
