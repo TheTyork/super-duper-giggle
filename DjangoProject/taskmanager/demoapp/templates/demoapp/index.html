@@ -1,14 +1,20 @@
+{% extends 'main/base.html'%}
+{% load static %}
 
-<!doctype html>
-<html lang="en" xmlns:filter="http://www.w3.org/1999/xhtml" >
-<head>
-</head>
-<body>
-<div>
+
+{% block title %}
+    DISPALY
+{% endblock %}
+
+{% block content %}
+
+    <h1>Страница для отображения </h1>
+    <p>Это главный параграф</p>
+
     <p>{{ PAGE }}</p>
-    <p>{{ GROUP }}</p>
     <p>{{ TAB }}</p>
+    <p>{{ GROUP }}</p>
     <p>{{ PARAM }}</p>
-</div>
-</body>
-</html>
+
+{% endblock %}
+

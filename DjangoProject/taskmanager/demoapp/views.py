@@ -4,16 +4,11 @@ from .models import page, tab, group, param # импорт модели News и�
 
 def index(request):
     PAGE = page.objects.all()
-    return render(request, "demoapp/index.html", {"PAGE": PAGE})
 
-def index_1(request):
-    TAB = tab.objects.all()
-    return render(request, "demoapp/index.html", {"TAB": PAGE})
-
-def index_2(request):
+    p = page.objects.get(pk=11)
+    TAB = p.tab_set.all()
+    # return render(request, "demoapp/index.html", {})
     GROUP = group.objects.all()
-    return render(request, "demoapp/index.html", {"GROUP": PAGE})
-
-def index_3(request):
+    # return render(request, "demoapp/index.html", {})
     PARAM = param.objects.all()
-    return render(request, "demoapp/index.html", {"PARAM": PAGE})
+    return render(request, "demoapp/index.html",{"PAGE": PAGE,"TAB": TAB,"GROUP": GROUP,"PARAM": PARAM})

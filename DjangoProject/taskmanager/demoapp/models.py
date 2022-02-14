@@ -31,4 +31,4 @@ class param(models.Model):
     group = models.ForeignKey(group,on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.name ,self.value, self.si
+        return self.name
