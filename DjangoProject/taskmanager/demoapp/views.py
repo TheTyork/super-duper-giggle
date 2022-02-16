@@ -19,7 +19,7 @@ from .serializers import *
 class tabview(APIView):
     def get(self, request):
         TAB = tab.objects.all()
-        serializer = PAGESerializer.TABSerializer(TAB, many=True)
+        serializer = TABSerializer(TAB, many=True)
         return Response(serializer.data)
 
 class pageview(APIView):

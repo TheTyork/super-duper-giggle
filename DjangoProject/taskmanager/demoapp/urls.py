@@ -8,7 +8,7 @@ urlpatterns = [
     # по адресу «news/» в файле news/views.py выполнять метод index
     path('views/', views.index),
     path('tabs/', views.tabview.as_view()),
-    path('page/', views.pageview.as_view()),
-    path('param/', views.paramview.as_view()),
-    path('group/', views.groupview.as_view()),
+    path('pages/', views.pageview.as_view()),
+    path('params/', views.paramview.as_view()),
+    path('groups/', views.groupview.as_view()),
 ]
