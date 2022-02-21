@@ -11,7 +11,18 @@
   console.log(json)
   for (pages in json){
       // прербор по страницам
-      console.log(json[pages]['title'])
+      let  MenuForPages = document.getElementById('menu')
+      let PageFor = document.createElement('li')
+      let TextPageFor = document.createElement('a')
+      PageFor.className = 'nav-item'
+      MenuForPages.append(PageFor)
+      TextPageFor.innerText = json[pages]['title']
+      TextPageFor.onclick = ClickPage
+      TextPageFor.className = 'nav-link text-white'
+      PageFor.append(TextPageFor)
+      function ClickPage() {
+
+      }
 
       for (tabs in json[pages]['tab']){
           //перебор по табам
