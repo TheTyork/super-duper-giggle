@@ -1,4 +1,4 @@
-{% extends 'main/base.html'%}
+{% extends 'main/base.html' %}
 {% load static %}
 
 
@@ -7,24 +7,42 @@
 {% endblock %}
 
 {% block content %}
- <br>
-<div class="container bg-dark text-light rounded ">
-   <div class="d-flex align-items-start ">
-       <div class="border-end p-3">
-            <div id='tabs' class="nav flex-column nav-pills me-3 " id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <button class="nav-link " id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Главная</button>
+    <br>
+    <div class="container bg-dark text-light rounded ">
+        <div class="d-flex align-items-start ">
+            <div class="border-end p-3">
+                <div id='tabs' class="nav flex-column nav-pills me-3 " id="v-pills-tab" role="tablist"
+                     aria-orientation="vertical" aria-orientation="vertical">
+                </div>
             </div>
-       </div>
-   <div class="p-3">
-            <div  id='groups' class="tab-content " id="v-pills-tabContent">
-                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">ЫВППЫВВЫП</div>
-                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">ЫВПЫВПЫВППЫВ</div>
-                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">ЫВПЫВП</div>
-                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">132132132</div>
+            <div class="p-3">
+                <div id='groups' class="tab-content " id="v-pills-tabContent">
+
+                </div>
+                <div id="table">
+{#                    <TABLE class="table text-light" border=1>#}
+{#                        <THEAD>#}
+{#                        <TD>Name</TD>#}
+{#                        <TD>Value</TD>#}
+{#                        <TD>Si</TD>#}
+{#                        </THEAD>#}
+{#                        <TBODY>#}
+{#                        <TR>#}
+{#                            <TD>Ту-46</TD>#}
+{#                            <TD>100</TD>#}
+{#                            <TD>30</TD>#}
+{#                        </TR>#}
+{#                        <TR>#}
+{#                            <TD>Ан-54</TD>#}
+{#                            <TD>70</TD>#}
+{#                            <TD>40</TD>#}
+{#                        </TR>#}
+{#                        </TBODY>#}
+{#                    </TABLE>#}
+                </div>
             </div>
         </div>
     </div>
-</div>
 {% endblock %}
 
 
