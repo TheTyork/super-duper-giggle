@@ -24,7 +24,7 @@
             let MenuforTabs = document.getElementById('tabs')
             let flagTab = true
             MenuforTabs.innerHTML = ''
-            for (tabs in PageTab) {
+            for (let tabs in PageTab) {
                 console.log(PageTab[tabs]['title'])
                 let TabFor = document.createElement("button")
                 if (flagTab) {
@@ -43,25 +43,51 @@
                 TabFor.innerText = PageTab[tabs]['title']
                 let TabGroup = PageTab[tabs]['group']
                 TabFor.onclick = function () {
-                    flagGroup = true
+
+                    let flagGroup = true
                     MenuGroups.innerHTML = ''
-                    for (groups in TabGroup) {
+                    for (let groups in TabGroup) {
+                        TableParam.innerText = ''
                         let GroupFor = document.createElement("div")
-                        GroupFor.className = 'active'
+                        GroupFor.className = 'tab-pane fade show active p-2'
+                        GroupFor.id = 'v-pills-' + PageTab[tabs]['id']
+                        TabFor.setAttribute("aria-labelledby", 'v-pills-' + PageTab[tabs]['id'])
                         GroupFor.innerText = TabGroup[groups]['title']
                         MenuGroups.append(GroupFor)
+                        let GroupParam = TabGroup[groups]['param']
                         flagGroup = false
+                        let TableAll = document.createElement('table')
+                        TableParam.append(TableAll)
+                        TableAll.className = 'table table-dark border p-2'
                         let TheadParam = document.createElement('thead')
                         let TbodyParam = document.createElement('tbody')
-                        TableParam.append(TheadParam)
-                        let TDParam = document.createElement("td")
-                        TheadParam.append(TDParam)
-                        let GroupParam = TabGroup[groups]['param']
-                        for (param in GroupParam) {
+                        TableAll.append(TheadParam)
+                        TableAll.append(TbodyParam)
+                        let TRHead = document.createElement('tr')
+                        TheadParam.append(TRHead)
+                        let TDParamName = document.createElement("td")
+                        TDParamName.innerText = 'Name'
+                        TRHead.append(TDParamName)
+                        let TDParamValue = document.createElement("td")
+                        TDParamValue.innerText = 'Value'
+                        TRHead.append(TDParamValue)
+                        let TDParamID = document.createElement("td")
+                        TDParamID.innerText = 'Si'
+                        TRHead.append(TDParamID)
+                        for (let param in GroupParam) {
+                            let TRBody = document.createElement('tr')
+                            TbodyParam.append(TRBody)
+                            let ParamForName = document.createElement('td')
+                            ParamForName.innerText = GroupParam[param]['name']
+                            let ParamForValue = document.createElement('td')
+                            ParamForValue.innerText = GroupParam[param]['value']
+                            let ParamForSi = document.createElement('td')
+                            ParamForSi.innerText = GroupParam[param]['si']
+                            TRBody.append(ParamForName)
+                            TRBody.append(ParamForValue)
+                            TRBody.append(ParamForSi)
 
                         }
-
-                        TableParam.append(TbodyParam)
 
                     }
 
