@@ -1,35 +1,35 @@
 (async () => {
     let response = await fetch('api/pages/')
     let json = await response.json()
+    let Pageflag = true
     for (pages in json) {
         // прербор по страницам
         let MenuForPages = document.getElementById('menu')
         const TableParam = document.getElementById('table')
         let PageFor = document.createElement('li')
         let TextPageFor = document.createElement('a')
-        let Line = document.getElementById('line')
-        let LineTab = document.getElementById('linetab')
-
+        TextPageFor.className = ' nav-link text-white  rounded-1 '
+        TextPageFor.setAttribute("data-bs-toggle", "pill")
+        Pageflag = false
+        console.log(false)
         MenuForPages.append(PageFor)
         TextPageFor.innerText = json[pages]['title']
         let PageTab = json[pages]['tab']
-        TextPageFor.className = 'nav-link text-white'
         PageFor.append(TextPageFor)
-
         TextPageFor.onclick = function () {
             let MenuGroups = document.getElementById('groups')
             MenuGroups.innerHTML = ''
             let MenuforTabs = document.getElementById('tabs')
             let flagTab = true
             MenuforTabs.innerHTML = ''
-
             for (let tabs in PageTab) {
                 console.log(PageTab[tabs]['title'])
                 let TabFor = document.createElement("button")
                 if (flagTab) {
-                    TabFor.className = 'nav-link active text-start '
+                    TabFor.className = 'nav-link  text-start  rounded-1 '
+
                 } else {
-                    TabFor.className = 'nav-link text-start '
+                    TabFor.className = ' nav-link  text-start   rounded-1 '
                 }
                 flagTab = false
                 TabFor.id = PageTab[tabs]['id']
@@ -84,6 +84,13 @@
                             TRBody.append(ParamForSi)
 
                         }
+                    }
+                    if (MenuforTabs.parentElement.offsetHeight > MenuGroups.parentElement.offsetHeight) {
+                        MenuforTabs.parentElement.className = 'p-3 border-end'
+                        MenuGroups.parentElement.className = "p-3"
+                    } else {
+                        MenuforTabs.parentElement.className = 'p-3'
+                        MenuGroups.parentElement.className = "p-3 border-start"
                     }
                 }
             }
