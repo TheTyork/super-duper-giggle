@@ -14,32 +14,63 @@ div#backimg {
 
 }
 
-    a.nav-link {
-        text-decoration: none;
-        display: inline-block;
-        position: relative;
-        border: 1px solid white;
-        color: white;
-        transition: .4s;
-        margin-right: 5px;
-    }
+a.nav-link {
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    border: 1px solid white;
+    color: white;
+    transition: .2s;
+    margin-right: 5px;
+}
 
-    a.nav-link:after  {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        width: 100%;
-        height: 100%;
-        margin: auto;
-        border: 1px solid rgba(0, 0, 0, 0);
-        transition: .4s;
-    }
+a.nav-link:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    border: 1px solid rgba(0, 0, 0, 0);
+    transition: .2s;
+}
 
-    a.nav-link:hover:after {
-        border-color: white;
-        width: calc(100% - 10px);
-        height: calc(100% + 10px);
-    }
+a.nav-link:hover:after {
+    border-color: #f89248;
+    width: calc(100% - 10px);
+    height: calc(100% + 10px);
+}
+
+button.nav-link {
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    border: 1px solid white;
+    color: white;
+    transition: .2s;
+    margin-right: 5px;
+
+}
+
+button.nav-link:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    border: 1px solid rgba(0, 0, 0, 0);
+    transition: .2s;
+}
+
+button.nav-link:hover:after {
+    border-color: #f89248;
+    width: calc(100% - 10px);
+    height: calc(100% + 10px);
+}

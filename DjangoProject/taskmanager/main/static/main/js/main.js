@@ -8,28 +8,30 @@
         const TableParam = document.getElementById('table')
         let PageFor = document.createElement('li')
         let TextPageFor = document.createElement('a')
-        TextPageFor.className = ' nav-link text-white  rounded-1 '
+        TextPageFor.className = ' nav-link  rounded-1 '
         TextPageFor.setAttribute("data-bs-toggle", "pill")
         Pageflag = false
-        console.log(false)
         MenuForPages.append(PageFor)
         TextPageFor.innerText = json[pages]['title']
         let PageTab = json[pages]['tab']
         PageFor.append(TextPageFor)
         TextPageFor.onclick = function () {
+
             let MenuGroups = document.getElementById('groups')
             MenuGroups.innerHTML = ''
             let MenuforTabs = document.getElementById('tabs')
             let flagTab = true
             MenuforTabs.innerHTML = ''
+
+
             for (let tabs in PageTab) {
-                console.log(PageTab[tabs]['title'])
+                MenuforTabs.parentElement.className = 'p-3 border-end'
                 let TabFor = document.createElement("button")
                 if (flagTab) {
-                    TabFor.className = 'nav-link  text-start  rounded-1 '
+                    TabFor.className = 'nav-link  text-start  rounded-1 mb-2'
 
                 } else {
-                    TabFor.className = ' nav-link  text-start   rounded-1 '
+                    TabFor.className = ' nav-link  text-start   rounded-1 mb-2'
                 }
                 flagTab = false
                 TabFor.id = PageTab[tabs]['id']
@@ -93,6 +95,10 @@
                         MenuGroups.parentElement.className = "p-3 border-start"
                     }
                 }
+            }
+            if(MenuforTabs.children.length=== 0 ){
+                MenuforTabs.parentElement.innerHTML= ''
+                MenuforTabs.parentElement.parentElement.innerText= ''
             }
         }
     }
