@@ -1,11 +1,11 @@
 async function jJson() {
     let response = await fetch('api/pages/')
-    console.log('asfsa')
     return await response.json()
 }
 
 async function program() {
     let json = await jJson()
+    console.log(json)
     let Pageflag = true
     let flagErrorTabs = true
     let FlagErrorGrups = true
@@ -25,6 +25,7 @@ async function program() {
         TextPageFor.innerText = json[pages]['title']
         let PageTab = json[pages]['tab']
         PageFor.append(TextPageFor)
+
         TextPageFor.onclick = function () {
             let MenuGroups = document.getElementById('groups')
             MenuGroups.innerHTML = ''
@@ -58,10 +59,8 @@ async function program() {
 
                 TabFor.onclick = function () {
                     MenuGroups.innerHTML = ''
-
                     for (let groups in TabGroup) {
                         TableParam.innerText = ''
-
                         let GroupFor = document.createElement("div")
                         GroupFor.className = 'tab-pane fade show active p-2 h5'
                         GroupFor.id = 'v-pills-' + PageTab[tabs]['id']
@@ -95,7 +94,6 @@ async function program() {
                         TRBodyError.append(TDError)
                         TbodyParam.append(TRBodyError)
                         TRBodyError.hidden = true
-
                         for (let param in GroupParam) {
                             let TRBody = document.createElement('tr')
                             TbodyParam.append(TRBody)
@@ -144,7 +142,8 @@ async function program() {
 
 }
 
-setInterval(jJson,1000)
+setInterval(jJson, 1000)
+setInterval(program, 10000)
 document.addEventListener('DOMContentLoaded', function () {
     program()
 })
