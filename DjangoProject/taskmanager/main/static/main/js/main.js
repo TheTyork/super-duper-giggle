@@ -1,5 +1,5 @@
 async function jJson() {
-    let response = await fetch('api/pages/')
+    let response = await fetch('api/pages/');
     json = await response.json()
 }
 
@@ -55,10 +55,15 @@ async function program() {
                 let TabGroup = PageTab[tabs]['group']
                 TabFor.onclick = function () {
                     MenuGroups.innerHTML = ''
-                    console.log('sdaasd')
-                    setInterval(IntervalPages,1000)
+                    setInterval(IntervalPages, 5000)
+
                     function IntervalPages() {
+                        //console.log('sdaasd')
                         MenuGroups.innerHTML = ''
+                        PageTab=json[pages]['tab']
+                        console.log(pages)
+                        console.log(json[pages])
+                        TabGroup=PageTab[tabs]['group']
                         for (let groups in TabGroup) {
                             TableParam.innerText = ''
                             let GroupFor = document.createElement("div")
@@ -139,13 +144,11 @@ async function program() {
             }
         }
     }
-
-
 }
 
 let json = ''
-setInterval(jJson, 1000)
-setTimeout(program, 1500)
+setInterval(jJson, 5000)
+setInterval(program, 7000)
 
 
 
