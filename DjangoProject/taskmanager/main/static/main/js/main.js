@@ -56,24 +56,26 @@ async function program() {
                 TabFor.innerText = PageTab[tabs]['title']
                 let TabID = PageTab[tabs]['id']
                 TabFor.onclick = function () {
+
                     MenuGroups.innerHTML = ''
                     let IndexPage = json.map(el => el.id).indexOf(PageID)
-                    console.log(json[IndexPage]['tab'])
+                    // console.log(json[IndexPage]['tab'])
                     let IndexTab = json[IndexPage]['tab'].map(el => el.id).indexOf(TabID)
                     let TabGroup = json[IndexPage]['tab'][IndexTab]['group']
-                    console.log(json[IndexPage]['tab'][IndexTab]['group'])
-                    function IntervalPages() {
-                        MenuGroups.innerHTML = ''
-                        for (let groups in TabGroup) {
-                            TableParam.innerText = ''
 
+                    // console.log(TabGroup)
+                    function CreateTable() {
+                        MenuGroups.innerHTML = ''
+                        // console.log(json[IndexPage]['tab'][IndexTab]['group'])
+                        for (let groups in json[IndexPage]['tab'][IndexTab]['group']) {
+                            TableParam.innerText = ''
                             let GroupFor = document.createElement("div")
                             GroupFor.className = 'tab-pane fade show active p-2 h5'
                             GroupFor.id = 'v-pills-' + PageTab[tabs]['id']
                             GroupFor.setAttribute("aria-labelledby", 'v-pills-' + PageTab[tabs]['id'])
-                            GroupFor.innerText = TabGroup[groups]['title']
+                            GroupFor.innerText = json[IndexPage]['tab'][IndexTab]['group'][groups]['title']
                             MenuGroups.append(GroupFor)
-                            let GroupParam = TabGroup['param']
+                            let GroupParam = json[IndexPage]['tab'][IndexTab]['group'][groups]['param']
                             let TableAll = document.createElement('table')
                             MenuGroups.append(TableAll)
                             TableAll.className = 'table table-dark border p-2'
@@ -81,7 +83,6 @@ async function program() {
                             let TbodyParam = document.createElement('tbody')
                             TableAll.append(TheadParam)
                             TableAll.append(TbodyParam)
-
                             let TRHead = document.createElement('tr')
                             TheadParam.append(TRHead)
                             let TDParamName = document.createElement("td")
@@ -132,15 +133,36 @@ async function program() {
                             Error.hidden = false
 
                         }
-
                     }
 
-                    setInterval(IntervalPages, 1000)
+                    clearInterval(IntervalTableCreate)
+                    IntervalTableCreate = setInterval(CreateTable, 1000)
                 }
             }
+            clearInterval(IntervalTableCreate)
+            let InputSec = document.getElementById('inputsec')
+            InputSec.offsetWidth = '20px'
+            InputSec.innerText = ''
+            InputSec.hidden = false
+            let InputObnov = document.createElement('input')
+            InputSec.append(InputObnov)
+            InputObnov.type = 'text'
+            InputObnov.className = 'form-control'
+            InputObnov.placeholder = 'Частота обновления'
+            InputObnov.setAttribute("aria-label", "Recipient's username")
+            InputObnov.setAttribute("aria-describedby", "button-addon2")
+            let ButtonObnov = document.createElement("button")
+            InputSec.append(ButtonObnov)
+            ButtonObnov.className = "btn btn-outline-secondary"
+            ButtonObnov.type = 'button'
+            ButtonObnov.id = 'button-addon2'
+            ButtonObnov.innerText = 'Enter'
+
+
             if (MenuforTabs.children.length === 0) {
                 (MenuforTabs.parentElement.parentElement.parentElement.firstElementChild).hidden = false
                 MenuforTabs.prepend(Error)
+                InputSec.hidden = true
                 Error.hidden = false
                 MenuforTabs.parentElement.className = 'p-3'
                 MenuGroups.parentElement.className = "p-3"
@@ -150,7 +172,7 @@ async function program() {
 }
 
 let json = ''
-
+let IntervalTableCreate = 0
 setInterval(jJson, 1000)
 setTimeout(program, 1500)
 
