@@ -25,7 +25,6 @@ async function program() {
         let PageID = json[pages]['id']
         PageFor.append(TextPageFor)
         TextPageFor.onclick = function () {
-
             let MenuGroups = document.getElementById('groups')
             MenuGroups.innerHTML = ''
             let MenuforTabs = document.getElementById('tabs')
@@ -56,7 +55,6 @@ async function program() {
                 TabFor.innerText = PageTab[tabs]['title']
                 let TabID = PageTab[tabs]['id']
                 TabFor.onclick = function () {
-
                     MenuGroups.innerHTML = ''
                     let IndexPage = json.map(el => el.id).indexOf(PageID)
                     // console.log(json[IndexPage]['tab'])
@@ -64,6 +62,7 @@ async function program() {
                     let TabGroup = json[IndexPage]['tab'][IndexTab]['group']
 
                     // console.log(TabGroup)
+
                     function CreateTable() {
                         MenuGroups.innerHTML = ''
                         // console.log(json[IndexPage]['tab'][IndexTab]['group'])
@@ -117,10 +116,7 @@ async function program() {
                             if (TbodyParam.children.length === 1) {
                                 TRBodyError.hidden = false
                             }
-
                         }
-
-
                         if (MenuforTabs.parentElement.offsetHeight > MenuGroups.parentElement.offsetHeight) {
                             MenuforTabs.parentElement.className = 'p-3 border-end'
                             MenuGroups.parentElement.className = "p-3"
@@ -131,12 +127,13 @@ async function program() {
                         if (MenuGroups.children.length === 0) {
                             MenuGroups.prepend(Error)
                             Error.hidden = false
-
                         }
                     }
 
+                    CreateTable()
                     clearInterval(IntervalTableCreate)
-                    IntervalTableCreate = setInterval(CreateTable, 1000)
+                    IntervalTableCreate = setInterval(CreateTable, frequency)
+
                 }
             }
             clearInterval(IntervalTableCreate)
@@ -147,6 +144,7 @@ async function program() {
             let InputObnov = document.createElement('input')
             InputSec.append(InputObnov)
             InputObnov.type = 'text'
+            InputObnov.id = 'InputObnov'
             InputObnov.className = 'form-control'
             InputObnov.placeholder = 'Частота обновления'
             InputObnov.setAttribute("aria-label", "Recipient's username")
@@ -155,9 +153,13 @@ async function program() {
             InputSec.append(ButtonObnov)
             ButtonObnov.className = "btn btn-outline-secondary"
             ButtonObnov.type = 'button'
+            ButtonObnov.onclick = frequencydraw
             ButtonObnov.id = 'button-addon2'
             ButtonObnov.innerText = 'Enter'
-
+            labelfrequency = document.createElement("label")
+            MenuforTabs.append(document.createElement("hr"))
+            MenuforTabs.append(labelfrequency)
+            labelfrequency.innerText = "Частота :" + frequency / 1000 + ' sec'
 
             if (MenuforTabs.children.length === 0) {
                 (MenuforTabs.parentElement.parentElement.parentElement.firstElementChild).hidden = false
@@ -171,8 +173,22 @@ async function program() {
     }
 }
 
+function frequencydraw() {
+    let znach = document.getElementById("InputObnov").value
+    if (!isNaN(znach)) {
+        frequency = znach * 1000
+        clearInterval(IntervalTableCreate)
+        labelfrequency.innerText = "Частота :" + frequency / 1000 + ' sec'
+
+    } else {
+        alert('Введеное значение не корректно')
+    }
+}
+
 let json = ''
-let IntervalTableCreate = 0
+let frequency = 1000
+let IntervalTableCreate = ''
+let labelfrequency = ''
 setInterval(jJson, 1000)
 setTimeout(program, 1500)
 
